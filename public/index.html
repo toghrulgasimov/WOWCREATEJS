@@ -18,7 +18,7 @@
         }
         .table-wrapper-scroll-y {
             display: block;
-            max-height: 300px;
+            max-height: 200px;
             overflow-y: auto;
             -ms-overflow-style: -ms-autohiding-scrollbar;
         }
@@ -35,7 +35,7 @@
         function init() {
             let stage = new createjs.Stage("c");
             stage.canvas.width  = window.innerWidth;
-            stage.canvas.height  = window.innerHeight - 300;
+            stage.canvas.height  = window.innerHeight - 200;
 
             stage.enableMouseOver();
             createjs.Touch.enable(stage);
@@ -108,7 +108,7 @@
             stage.addChild(cont);
 
             cont.x = (window.innerWidth / 2) - 210;
-            cont.y = (window.innerHeight) - 450;
+            cont.y = (window.innerHeight) - 350;
 
 
 
