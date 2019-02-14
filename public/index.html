@@ -31,9 +31,123 @@
     <script src="https://code.createjs.com/easeljs-0.8.2.min.js"></script>
 
 
-    <script>
-        var stage, text;
-        function init() {
+
+</head>
+
+<body>
+
+
+<body onload="init();">
+<info id = "info" wow="" duration=""></info>
+<div id="div" class="table-wrapper-scroll-y">
+    <table class="table table-sm table-dark">
+        <!--<thead>-->
+        <!--<tr>-->
+            <!--<th scope="col">Yer</th>-->
+            <!--<th scope="col"> </th>-->
+            <!--<th scope="col">Ad</th>-->
+            <!--<th scope="col">Reyting</th>-->
+        <!--</tr>-->
+        <!--</thead>-->
+        <tbody id="table">
+
+        <tr class='clickable-row' data-href='http://35.231.39.26:3000/users/getUser?id=5c595e7daa929d655a5dcc8c'>
+            <th class='align-middle' scope="row">1</th>
+            <td class='align-middle'><img src='http://35.231.39.26:3000/profile/images/default.jpg' width='40px' height='40px'></td>
+            <td class='align-middle'>Toghrul Gasimov</td>
+            <td class='align-middle'>5</td>
+        </tr>
+        <tr class='clickable-row' data-href='http://35.231.39.26:3000/users/getUser?id=5c595e7daa929d655a5dcc8c'>
+            <th class='align-middle' scope="row">1</th>
+            <td class='align-middle'><img src='http://35.231.39.26:3000/profile/images/default.jpg' width='40px' height='40px'></td>
+            <td class='align-middle'>Toghrul Gasimov</td>
+            <td class='align-middle'>5</td>
+        </tr>
+        <tr class='clickable-row' data-href='http://35.231.39.26:3000/users/getUser?id=5c595e7daa929d655a5dcc8c'>
+            <th class='align-middle' scope="row">1</th>
+            <td class='align-middle'><img src='http://35.231.39.26:3000/profile/images/default.jpg' width='40px' height='40px'></td>
+            <td class='align-middle'>Toghrul Gasimov</td>
+            <td class='align-middle'>5</td>
+        </tr>
+        <tr class='clickable-row' data-href='http://35.231.39.26:3000/users/getUser?id=5c595e7daa929d655a5dcc8c'>
+            <th class='align-middle' scope="row">1</th>
+            <td class='align-middle'><img src='http://35.231.39.26:3000/profile/images/default.jpg' width='40px' height='40px'></td>
+            <td class='align-middle'>Toghrul Gasimov</td>
+            <td class='align-middle'>5</td>
+        </tr>
+        <tr class='clickable-row' data-href='http://35.231.39.26:3000/users/getUser?id=5c595e7daa929d655a5dcc8c'>
+            <th class='align-middle' scope="row">1</th>
+            <td class='align-middle'><img src='http://35.231.39.26:3000/profile/images/default.jpg' width='40px' height='40px'></td>
+            <td class='align-middle'>Toghrul Gasimov</td>
+            <td class='align-middle'>5</td>
+        </tr>
+        <tr class='clickable-row' data-href='http://35.231.39.26:3000/users/getUser?id=5c595e7daa929d655a5dcc8c'>
+            <th class='align-middle' scope="row">1</th>
+            <td class='align-middle'><img src='http://35.231.39.26:3000/profile/images/default.jpg' width='40px' height='40px'></td>
+            <td class='align-middle'>Toghrul Gasimov</td>
+            <td class='align-middle'>5</td>
+        </tr>
+        <tr class='clickable-row' data-href='http://35.231.39.26:3000/users/getUser?id=5c595e7daa929d655a5dcc8c'>
+            <th class='align-middle' scope="row">1</th>
+            <td class='align-middle'><img src='http://35.231.39.26:3000/profile/images/default.jpg' width='40px' height='40px'></td>
+            <td class='align-middle'>Toghrul Gasimov</td>
+            <td class='align-middle'>5</td>
+        </tr>
+        <tr class='clickable-row' data-href='http://35.231.39.26:3000/users/getUser?id=5c595e7daa929d655a5dcc8c'>
+            <th class='align-middle' scope="row">1</th>
+            <td class='align-middle'><img src='http://35.231.39.26:3000/profile/images/default.jpg' width='40px' height='40px'></td>
+            <td class='align-middle'>Toghrul Gasimov</td>
+            <td class='align-middle'>5</td>
+        </tr>
+        <tr class='clickable-row' data-href='http://35.231.39.26:3000/users/getUser?id=5c595e7daa929d655a5dcc8c'>
+            <th class='align-middle' scope="row">1</th>
+            <td class='align-middle'><img src='http://35.231.39.26:3000/profile/images/default.jpg' width='40px' height='40px'></td>
+            <td class='align-middle'>Toghrul Gasimov</td>
+            <td class='align-middle'>5</td>
+        </tr>
+        </tbody>
+    </table>
+
+</div>
+
+<div>
+<canvas id="c">
+    alternate content
+</canvas>
+</div>
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.0/js/bootstrap.min.js" integrity="sha384-7aThvCh9TypR7fIc2HV4O/nFMVCBwyIUKL8XCtKE+8xgCgl/PQGuFsvShjr74PBp" crossorigin="anonymous"></script>
+<script src="js/socket.io.js"></script>
+<script>
+
+    function init() {
+
+    }
+
+</script>
+<script>
+
+
+    $(document).ready(function() {
+
+
+            $( "#div" ).css('max-height', '130px');
+
+            $("#c").attr("width", $(window).width());
+
+            $("#c").attr("height", $(window).height());
+            
+            $( ".clickable-row" ).dblclick(function() {
+                text.text = "sad";
+                let url = $(this).attr("data-href");
+                window.location.href = url;
+            });
+
+            var stage, text;
             stage = new createjs.Stage("c");
             stage.canvas.width  = window.innerWidth;
             stage.canvas.height  = window.innerHeight - 200;
@@ -226,124 +340,6 @@
 
 
             stage.update();
-        }
-
-    </script>
-</head>
-
-<body>
-
-
-<body onload="init();">
-<div id="div" class="table-wrapper-scroll-y">
-    <table class="table table-sm table-dark">
-        <!--<thead>-->
-        <!--<tr>-->
-            <!--<th scope="col">Yer</th>-->
-            <!--<th scope="col"> </th>-->
-            <!--<th scope="col">Ad</th>-->
-            <!--<th scope="col">Reyting</th>-->
-        <!--</tr>-->
-        <!--</thead>-->
-        <tbody id="table">
-
-        <tr class='clickable-row' data-href='http://35.231.39.26:3000/users/getUser?id=5c595e7daa929d655a5dcc8c'>
-            <th class='align-middle' scope="row">1</th>
-            <td class='align-middle'><img src='http://35.231.39.26:3000/profile/images/default.jpg' width='40px' height='40px'></td>
-            <td class='align-middle'>Toghrul Gasimov</td>
-            <td class='align-middle'>5</td>
-        </tr>
-        <tr class='clickable-row' data-href='http://35.231.39.26:3000/users/getUser?id=5c595e7daa929d655a5dcc8c'>
-            <th class='align-middle' scope="row">1</th>
-            <td class='align-middle'><img src='http://35.231.39.26:3000/profile/images/default.jpg' width='40px' height='40px'></td>
-            <td class='align-middle'>Toghrul Gasimov</td>
-            <td class='align-middle'>5</td>
-        </tr>
-        <tr class='clickable-row' data-href='http://35.231.39.26:3000/users/getUser?id=5c595e7daa929d655a5dcc8c'>
-            <th class='align-middle' scope="row">1</th>
-            <td class='align-middle'><img src='http://35.231.39.26:3000/profile/images/default.jpg' width='40px' height='40px'></td>
-            <td class='align-middle'>Toghrul Gasimov</td>
-            <td class='align-middle'>5</td>
-        </tr>
-        <tr class='clickable-row' data-href='http://35.231.39.26:3000/users/getUser?id=5c595e7daa929d655a5dcc8c'>
-            <th class='align-middle' scope="row">1</th>
-            <td class='align-middle'><img src='http://35.231.39.26:3000/profile/images/default.jpg' width='40px' height='40px'></td>
-            <td class='align-middle'>Toghrul Gasimov</td>
-            <td class='align-middle'>5</td>
-        </tr>
-        <tr class='clickable-row' data-href='http://35.231.39.26:3000/users/getUser?id=5c595e7daa929d655a5dcc8c'>
-            <th class='align-middle' scope="row">1</th>
-            <td class='align-middle'><img src='http://35.231.39.26:3000/profile/images/default.jpg' width='40px' height='40px'></td>
-            <td class='align-middle'>Toghrul Gasimov</td>
-            <td class='align-middle'>5</td>
-        </tr>
-        <tr class='clickable-row' data-href='http://35.231.39.26:3000/users/getUser?id=5c595e7daa929d655a5dcc8c'>
-            <th class='align-middle' scope="row">1</th>
-            <td class='align-middle'><img src='http://35.231.39.26:3000/profile/images/default.jpg' width='40px' height='40px'></td>
-            <td class='align-middle'>Toghrul Gasimov</td>
-            <td class='align-middle'>5</td>
-        </tr>
-        <tr class='clickable-row' data-href='http://35.231.39.26:3000/users/getUser?id=5c595e7daa929d655a5dcc8c'>
-            <th class='align-middle' scope="row">1</th>
-            <td class='align-middle'><img src='http://35.231.39.26:3000/profile/images/default.jpg' width='40px' height='40px'></td>
-            <td class='align-middle'>Toghrul Gasimov</td>
-            <td class='align-middle'>5</td>
-        </tr>
-        <tr class='clickable-row' data-href='http://35.231.39.26:3000/users/getUser?id=5c595e7daa929d655a5dcc8c'>
-            <th class='align-middle' scope="row">1</th>
-            <td class='align-middle'><img src='http://35.231.39.26:3000/profile/images/default.jpg' width='40px' height='40px'></td>
-            <td class='align-middle'>Toghrul Gasimov</td>
-            <td class='align-middle'>5</td>
-        </tr>
-        <tr class='clickable-row' data-href='http://35.231.39.26:3000/users/getUser?id=5c595e7daa929d655a5dcc8c'>
-            <th class='align-middle' scope="row">1</th>
-            <td class='align-middle'><img src='http://35.231.39.26:3000/profile/images/default.jpg' width='40px' height='40px'></td>
-            <td class='align-middle'>Toghrul Gasimov</td>
-            <td class='align-middle'>5</td>
-        </tr>
-        </tbody>
-    </table>
-
-</div>
-
-<div>
-<canvas id="c">
-    alternate content
-</canvas>
-</div>
-
-
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.0/js/bootstrap.min.js" integrity="sha384-7aThvCh9TypR7fIc2HV4O/nFMVCBwyIUKL8XCtKE+8xgCgl/PQGuFsvShjr74PBp" crossorigin="anonymous"></script>
-<script src="js/socket.io.js"></script>
-<script>
-
-    $(document).ready(function() {
-            let socket = io();
-            //var _id = $("$playerid").text();
-        var _id = "testid"
-            // soz tapilanda emit ele
-
-            $( "#div" ).css('max-height', '130px');
-
-            $("#c").attr("width", $(window).width());
-
-            $("#c").attr("height", $(window).height());
-            stage.update();
-            text.text = "sadas";
-            setInterval(function () {
-
-                socket.emit('data', {_id:_id, soz:"salam", number:1});
-                console.log("sended");
-
-            }, 1000);
-            $( ".clickable-row" ).dblclick(function() {
-                text.text = "sad";
-                let url = $(this).attr("data-href");
-                window.location.href = url;
-            });
 
         }
         );

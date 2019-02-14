@@ -14,7 +14,7 @@ function shuffle(s) {
         a[i] = a[j];
         a[j] = x;
     }
-    ans = a.join();
+    ans = a.join("");
     return ans;
 }
 

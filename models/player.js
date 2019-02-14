@@ -8,8 +8,7 @@ let WowPlayerSchema = new mongoose.Schema({
         required: true
     },
     score:{
-        type: Number,
-        required: true
+        type: Number
     },
     firstName:{
         type: String,
