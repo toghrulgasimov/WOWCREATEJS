@@ -6,6 +6,7 @@ var logger = require('morgan');
 var socket_io = require("socket.io");
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+const {mongoose} = require('./dao/mongoose');
 
 var app = express();
 var io = socket_io();
