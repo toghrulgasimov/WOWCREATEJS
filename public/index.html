@@ -18,7 +18,7 @@
         }
         .table-wrapper-scroll-y {
             display: block;
-            max-height: 200px;
+            max-height: 100px;
             overflow-y: auto;
             -ms-overflow-style: -ms-autohiding-scrollbar;
         }
@@ -32,8 +32,9 @@
 
 
     <script>
+        var stage, text;
         function init() {
-            let stage = new createjs.Stage("c");
+            stage = new createjs.Stage("c");
             stage.canvas.width  = window.innerWidth;
             stage.canvas.height  = window.innerHeight - 200;
 
@@ -47,8 +48,8 @@
             let L = [];
 
 
-            let n = 9;
-            let R = 130, RR = 100;
+            let n = 6;
+            let R = 95, RR = 65;
 
             if(n == 3) {
                 RR = 65;
@@ -57,8 +58,8 @@
                 RR = 65;
                 R = 95;
             }else if(n == 6) {
-                RR = 120;
-                R = 150;
+                RR = 80;
+                R = 110;
             }else if(n == 7) {
                 RR = 100;
                 R = 130;
@@ -76,16 +77,12 @@
             ce.x = 200;
             ce.y = -30;
 
-            let text = new createjs.Text("", "50px Arial", "#ffffff");
+            text = new createjs.Text("", "50px Arial", "#ffffff");
             text.x = ce.x;
-            text.y = ce.y - R - 80;
+            text.y = ce.y - R - 80+10+20;
             text.textAlign = "center";
             cont.addChild(ce);
             cont.addChild(text);
-
-
-
-
 
             let ch = ['A','M','Ç','D','E', 'F', 'T', 'T', 'T', 'T', 'T'];
             for(let i = 0; i < n; i++) {
@@ -107,8 +104,10 @@
 
             stage.addChild(cont);
 
-            cont.x = (window.innerWidth / 2) - 210;
-            cont.y = (window.innerHeight) - 350;
+            let w = $(window).width();
+            let h = $(window).height();
+            cont.x = w / 2 - ce.x;
+            cont.y = h-R - ce.y - 120;
 
 
 
@@ -236,67 +235,67 @@
 
 
 <body onload="init();">
-<div class="table-wrapper-scroll-y">
+<div id="div" class="table-wrapper-scroll-y">
     <table class="table table-sm table-dark">
-        <thead>
-        <tr>
-            <th scope="col">Yer</th>
-            <th scope="col"> </th>
-            <th scope="col">Ad</th>
-            <th scope="col">Reyting</th>
-        </tr>
-        </thead>
+        <!--<thead>-->
+        <!--<tr>-->
+            <!--<th scope="col">Yer</th>-->
+            <!--<th scope="col"> </th>-->
+            <!--<th scope="col">Ad</th>-->
+            <!--<th scope="col">Reyting</th>-->
+        <!--</tr>-->
+        <!--</thead>-->
         <tbody id="table">
 
-        <tr class='clickable-row' data-href='http://35.231.39.26:3000/users/getUser?id="+ps[i]._id'>
+        <tr class='clickable-row' data-href='http://35.231.39.26:3000/users/getUser?id=5c595e7daa929d655a5dcc8c'>
             <th class='align-middle' scope="row">1</th>
             <td class='align-middle'><img src='http://35.231.39.26:3000/profile/images/default.jpg' width='40px' height='40px'></td>
             <td class='align-middle'>Toghrul Gasimov</td>
             <td class='align-middle'>5</td>
         </tr>
-        <tr class='clickable-row' data-href='http://35.231.39.26:3000/users/getUser?id="+ps[i]._id'>
+        <tr class='clickable-row' data-href='http://35.231.39.26:3000/users/getUser?id=5c595e7daa929d655a5dcc8c'>
             <th class='align-middle' scope="row">1</th>
             <td class='align-middle'><img src='http://35.231.39.26:3000/profile/images/default.jpg' width='40px' height='40px'></td>
             <td class='align-middle'>Toghrul Gasimov</td>
             <td class='align-middle'>5</td>
         </tr>
-        <tr class='clickable-row' data-href='http://35.231.39.26:3000/users/getUser?id="+ps[i]._id'>
+        <tr class='clickable-row' data-href='http://35.231.39.26:3000/users/getUser?id=5c595e7daa929d655a5dcc8c'>
             <th class='align-middle' scope="row">1</th>
             <td class='align-middle'><img src='http://35.231.39.26:3000/profile/images/default.jpg' width='40px' height='40px'></td>
             <td class='align-middle'>Toghrul Gasimov</td>
             <td class='align-middle'>5</td>
         </tr>
-        <tr class='clickable-row' data-href='http://35.231.39.26:3000/users/getUser?id="+ps[i]._id'>
+        <tr class='clickable-row' data-href='http://35.231.39.26:3000/users/getUser?id=5c595e7daa929d655a5dcc8c'>
             <th class='align-middle' scope="row">1</th>
             <td class='align-middle'><img src='http://35.231.39.26:3000/profile/images/default.jpg' width='40px' height='40px'></td>
             <td class='align-middle'>Toghrul Gasimov</td>
             <td class='align-middle'>5</td>
         </tr>
-        <tr class='clickable-row' data-href='http://35.231.39.26:3000/users/getUser?id="+ps[i]._id'>
+        <tr class='clickable-row' data-href='http://35.231.39.26:3000/users/getUser?id=5c595e7daa929d655a5dcc8c'>
             <th class='align-middle' scope="row">1</th>
             <td class='align-middle'><img src='http://35.231.39.26:3000/profile/images/default.jpg' width='40px' height='40px'></td>
             <td class='align-middle'>Toghrul Gasimov</td>
             <td class='align-middle'>5</td>
         </tr>
-        <tr class='clickable-row' data-href='http://35.231.39.26:3000/users/getUser?id="+ps[i]._id'>
+        <tr class='clickable-row' data-href='http://35.231.39.26:3000/users/getUser?id=5c595e7daa929d655a5dcc8c'>
             <th class='align-middle' scope="row">1</th>
             <td class='align-middle'><img src='http://35.231.39.26:3000/profile/images/default.jpg' width='40px' height='40px'></td>
             <td class='align-middle'>Toghrul Gasimov</td>
             <td class='align-middle'>5</td>
         </tr>
-        <tr class='clickable-row' data-href='http://35.231.39.26:3000/users/getUser?id="+ps[i]._id'>
+        <tr class='clickable-row' data-href='http://35.231.39.26:3000/users/getUser?id=5c595e7daa929d655a5dcc8c'>
             <th class='align-middle' scope="row">1</th>
             <td class='align-middle'><img src='http://35.231.39.26:3000/profile/images/default.jpg' width='40px' height='40px'></td>
             <td class='align-middle'>Toghrul Gasimov</td>
             <td class='align-middle'>5</td>
         </tr>
-        <tr class='clickable-row' data-href='http://35.231.39.26:3000/users/getUser?id="+ps[i]._id'>
+        <tr class='clickable-row' data-href='http://35.231.39.26:3000/users/getUser?id=5c595e7daa929d655a5dcc8c'>
             <th class='align-middle' scope="row">1</th>
             <td class='align-middle'><img src='http://35.231.39.26:3000/profile/images/default.jpg' width='40px' height='40px'></td>
             <td class='align-middle'>Toghrul Gasimov</td>
             <td class='align-middle'>5</td>
         </tr>
-        <tr class='clickable-row' data-href='http://35.231.39.26:3000/users/getUser?id="+ps[i]._id'>
+        <tr class='clickable-row' data-href='http://35.231.39.26:3000/users/getUser?id=5c595e7daa929d655a5dcc8c'>
             <th class='align-middle' scope="row">1</th>
             <td class='align-middle'><img src='http://35.231.39.26:3000/profile/images/default.jpg' width='40px' height='40px'></td>
             <td class='align-middle'>Toghrul Gasimov</td>
@@ -306,10 +305,12 @@
     </table>
 
 </div>
-<canvas id="c" width="500" height="500">
+
+<div>
+<canvas id="c">
     alternate content
 </canvas>
-
+</div>
 
 
 
@@ -325,11 +326,24 @@
         var _id = "testid"
             // soz tapilanda emit ele
 
+            $( "#div" ).css('max-height', '130px');
+
+            $("#c").attr("width", $(window).width());
+
+            $("#c").attr("height", $(window).height());
+            stage.update();
+            text.text = "sadas";
             setInterval(function () {
 
                 socket.emit('data', {_id:_id, soz:"salam", number:1});
                 console.log("sended");
+
             }, 1000);
+            $( ".clickable-row" ).dblclick(function() {
+                text.text = "sad";
+                let url = $(this).attr("data-href");
+                window.location.href = url;
+            });
 
         }
         );
