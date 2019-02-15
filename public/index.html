@@ -51,60 +51,8 @@
         <!--</thead>-->
         <tbody id="table">
 
-        <tr class='clickable-row' data-href='http://35.231.39.26:3000/users/getUser?id=5c595e7daa929d655a5dcc8c'>
-            <th class='align-middle' scope="row">1</th>
-            <td class='align-middle'><img src='http://35.231.39.26:3000/profile/images/default.jpg' width='40px' height='40px'></td>
-            <td class='align-middle'>Toghrul Gasimov</td>
-            <td class='align-middle'>5</td>
-        </tr>
-        <tr class='clickable-row' data-href='http://35.231.39.26:3000/users/getUser?id=5c595e7daa929d655a5dcc8c'>
-            <th class='align-middle' scope="row">1</th>
-            <td class='align-middle'><img src='http://35.231.39.26:3000/profile/images/default.jpg' width='40px' height='40px'></td>
-            <td class='align-middle'>Toghrul Gasimov</td>
-            <td class='align-middle'>5</td>
-        </tr>
-        <tr class='clickable-row' data-href='http://35.231.39.26:3000/users/getUser?id=5c595e7daa929d655a5dcc8c'>
-            <th class='align-middle' scope="row">1</th>
-            <td class='align-middle'><img src='http://35.231.39.26:3000/profile/images/default.jpg' width='40px' height='40px'></td>
-            <td class='align-middle'>Toghrul Gasimov</td>
-            <td class='align-middle'>5</td>
-        </tr>
-        <tr class='clickable-row' data-href='http://35.231.39.26:3000/users/getUser?id=5c595e7daa929d655a5dcc8c'>
-            <th class='align-middle' scope="row">1</th>
-            <td class='align-middle'><img src='http://35.231.39.26:3000/profile/images/default.jpg' width='40px' height='40px'></td>
-            <td class='align-middle'>Toghrul Gasimov</td>
-            <td class='align-middle'>5</td>
-        </tr>
-        <tr class='clickable-row' data-href='http://35.231.39.26:3000/users/getUser?id=5c595e7daa929d655a5dcc8c'>
-            <th class='align-middle' scope="row">1</th>
-            <td class='align-middle'><img src='http://35.231.39.26:3000/profile/images/default.jpg' width='40px' height='40px'></td>
-            <td class='align-middle'>Toghrul Gasimov</td>
-            <td class='align-middle'>5</td>
-        </tr>
-        <tr class='clickable-row' data-href='http://35.231.39.26:3000/users/getUser?id=5c595e7daa929d655a5dcc8c'>
-            <th class='align-middle' scope="row">1</th>
-            <td class='align-middle'><img src='http://35.231.39.26:3000/profile/images/default.jpg' width='40px' height='40px'></td>
-            <td class='align-middle'>Toghrul Gasimov</td>
-            <td class='align-middle'>5</td>
-        </tr>
-        <tr class='clickable-row' data-href='http://35.231.39.26:3000/users/getUser?id=5c595e7daa929d655a5dcc8c'>
-            <th class='align-middle' scope="row">1</th>
-            <td class='align-middle'><img src='http://35.231.39.26:3000/profile/images/default.jpg' width='40px' height='40px'></td>
-            <td class='align-middle'>Toghrul Gasimov</td>
-            <td class='align-middle'>5</td>
-        </tr>
-        <tr class='clickable-row' data-href='http://35.231.39.26:3000/users/getUser?id=5c595e7daa929d655a5dcc8c'>
-            <th class='align-middle' scope="row">1</th>
-            <td class='align-middle'><img src='http://35.231.39.26:3000/profile/images/default.jpg' width='40px' height='40px'></td>
-            <td class='align-middle'>Toghrul Gasimov</td>
-            <td class='align-middle'>5</td>
-        </tr>
-        <tr class='clickable-row' data-href='http://35.231.39.26:3000/users/getUser?id=5c595e7daa929d655a5dcc8c'>
-            <th class='align-middle' scope="row">1</th>
-            <td class='align-middle'><img src='http://35.231.39.26:3000/profile/images/default.jpg' width='40px' height='40px'></td>
-            <td class='align-middle'>Toghrul Gasimov</td>
-            <td class='align-middle'>5</td>
-        </tr>
+
+
         </tbody>
     </table>
 
@@ -132,6 +80,11 @@
 <script>
 
 
+    var audiot = new Audio('sounds/tapdi.mp3');
+    //audiot.play();
+
+    var audion = new Audio('sounds/novbeti.mp3');
+    //audion.play();
     $(document).ready(function() {
 
 
@@ -140,12 +93,24 @@
             $("#c").attr("width", $(window).width());
 
             $("#c").attr("height", $(window).height());
-            
+
             $( ".clickable-row" ).dblclick(function() {
                 text.text = "sad";
                 let url = $(this).attr("data-href");
                 window.location.href = url;
             });
+            let game = $("#info").attr("wow");
+            let words = game.split("|");
+            let herfler = words[0];
+            let tapilanlar = {};
+            let sozler = {};
+            let InfoD = {};
+            for(let i = 1; i < words.length; i++) {
+                sozler[words[i]] = true;
+                if(InfoD[words[i].length] == undefined) InfoD[words[i].length] = 1;
+                else InfoD[words[i].length] = InfoD[words[i].length] + 1;
+            }
+            console.log(InfoD)
 
             var stage, text;
             stage = new createjs.Stage("c");
@@ -162,7 +127,8 @@
             let L = [];
 
 
-            let n = 6;
+
+            let n = herfler.length;
             let R = 95, RR = 65;
 
             if(n == 3) {
@@ -198,9 +164,9 @@
             cont.addChild(ce);
             cont.addChild(text);
 
-            let ch = ['A','M','Ç','D','E', 'F', 'T', 'T', 'T', 'T', 'T'];
+            // let ch = ['A','M','Ç','D','E', 'F', 'T', 'T', 'T', 'T', 'T'];
             for(let i = 0; i < n; i++) {
-                let text = new createjs.Text(ch[i], "50px Arial", "#ffffff");
+                let text = new createjs.Text(herfler.charAt(i), "50px Arial", "#ffffff");
                 text.x = -20+6;
                 text.y = -20+6-3-2-2;
                 let circle = new createjs.Shape();
@@ -221,7 +187,7 @@
             let w = $(window).width();
             let h = $(window).height();
             cont.x = w / 2 - ce.x;
-            cont.y = h-R - ce.y - 120;
+            cont.y = h-R - ce.y - 120       -  0;
 
 
 
@@ -270,10 +236,63 @@
             stage.update();
 
 
+            let ts = 0;
+            let ws = words.length - 1;
+            let button = new createjs.Container()
+            let btext = new createjs.Text("Növbəti", "30px Arial", "#000000");
+            btext.x = 0;
+            btext.y = 0;
 
+            let infot = new createjs.Text("", "30px Arial", "#4eff00");
+            infot.x = 0;
+            infot.y = 60;
+            let nextButton = new createjs.Shape();
+            nextButton.graphics.beginFill('#6aff1b');
+            nextButton.graphics.drawRect(-11, -11, 120, 50);
+            nextButton.graphics.endFill();
+            let InfoDD = {};
+
+            for(let i = n; i >= 1; i--) {
+                InfoDD[i] = InfoD[i];
+                if(InfoD[i] != undefined && InfoD[i] != 0) {
+                    infot.text += (i+" Hərf    " + (InfoD[i])) + "\n";
+                }
+            }
+            infot.text += (""+Math.ceil(ts/ws * 100) + "%\n\n");
+            infot.text += "Reyting "+($("#info").attr("mission"));
+            infot.text += "\nXal "+(parseInt($("#info").attr("score"))+ts);
             stage.canvas.ontouchend = function(e){
                 S = {};
                 start = 0;
+                if(sozler[text.text] != undefined && tapilanlar[text.text] == undefined) {
+
+                    InfoD[text.text.length]--;
+                    infot.text = "";
+                    ts++;
+                    for(let i = n; i >= 1; i--) {
+
+                        if(InfoD[i] != undefined && InfoD[i] != 0) {
+                            infot.text += (i+" Hərf    " +(InfoD[i])) + "\n";
+                        }
+                    }
+                    infot.text += (""+Math.ceil(ts/ws * 100) + "%\n\n");
+                    infot.text += "Reyting "+($("#info").attr("mission"));
+                    infot.text += "\nXal "+(parseInt($("#info").attr("score"))+ts);
+                    let f = ts / ws * 100;
+                    console.log(f);
+                    if(f >= 30) {
+                        nextButton.alpha = 1;
+                        btext.alpha = 1;
+
+                        if(audion.playedd == undefined) {
+                            audion.play();
+                            audion.playedd = true;
+                        }
+                    }
+
+
+                    tapilanlar[text.text] = true;
+                }
                 text.text = "";
 
                 for(let i = 0; i < n; i++) {
@@ -287,6 +306,36 @@
             stage.canvas.onmouseup = function(e){
                 S = {};
                 start = 0;
+                if(sozler[text.text] != undefined && tapilanlar[text.text] == undefined) {
+                    audiot.play()
+                    InfoD[text.text.length]--;
+                    infot.text = "";
+                    ts++;
+                    for(let i = n; i >= 1; i--) {
+
+                        if(InfoD[i] != undefined && InfoD[i] != 0) {
+                            infot.text += (i+" Hərf    " + (InfoD[i])) + "\n";
+                        }
+                    }
+                    infot.text += (""+Math.ceil(ts/ws * 100) + "%\n\n");
+                    infot.text += "Reyting "+($("#info").attr("mission"));
+                    infot.text += "\nXal "+(parseInt($("#info").attr("score"))+ts);
+                    console.log(InfoD)
+
+                    let f = ts / ws * 100;
+                    console.log(f);
+                    if(f >= 30) {
+                        nextButton.alpha = 1;
+                        btext.alpha = 1;
+                        if(audion.playedd == undefined) {
+                            audion.play();
+                            audion.playedd = true;
+                        }
+                    }
+
+
+                    tapilanlar[text.text] = true;
+                }
                 text.text = "";
 
                 for(let i = 0; i < n; i++) {
@@ -339,6 +388,34 @@
             })
 
 
+
+
+
+
+
+
+
+            button.addChild(infot);
+            button.addChild(nextButton);
+            button.addChild(btext);
+
+            nextButton.alpha = 0;
+            btext.alpha = 0;
+
+            button.on("click", function(evt) {
+                $.ajax({
+                    type: "POST",
+                    url: "/nextmission",
+                    data: {ts:ts},
+                    success: function () {
+                        window.location.href = "http://35.231.39.26:3005/start"
+                    }
+                });
+            });
+
+            button.x = 0;
+            button.y = 100;
+            stage.addChild(button);
             stage.update();
 
         }
