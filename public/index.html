@@ -185,7 +185,7 @@
             let w = $(window).width();
             let h = $(window).height();
             cont.x = w / 2 - ce.x;
-            cont.y = h-R - ce.y - 120       -     300;
+            cont.y = h-R - ce.y - 120       -     150;
 
 
 
@@ -243,7 +243,7 @@
 
             let infot = new createjs.Text("", "20px Arial", "#4eff00");
             infot.x = 0;
-            infot.y = -5;
+            infot.y = -50;
             let nextButton = new createjs.Shape();
             nextButton.graphics.beginFill('#6aff1b');
             nextButton.graphics.drawRect(-11, -11, 120, 50);
@@ -412,7 +412,7 @@
             });
 
             button.x = 0;
-            button.y = 100;
+            button.y = 0;
             stage.addChild(button);
             stage.update();
 
