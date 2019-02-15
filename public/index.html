@@ -243,7 +243,7 @@
 
             let infot = new createjs.Text("", "20px Arial", "#4eff00");
             infot.x = 0;
-            infot.y = -50;
+            infot.y = 0;
             let nextButton = new createjs.Shape();
             nextButton.graphics.beginFill('#6aff1b');
             nextButton.graphics.drawRect(-11, -11, 120, 50);
@@ -411,7 +411,7 @@
                 });
             });
 
-            button.x = 0;
+            button.x = $(window).width() / 2;
             button.y = 0;
             stage.addChild(button);
             stage.update();
