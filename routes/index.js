@@ -16,7 +16,7 @@ router.get('/border', async function (req, res) {
     const $ = cheerio.load(s);
     let a = $("#table");
     console.log("connnnn");//
-    let ps = await WowPlayer.find({}).sort({mission:-1});
+    let ps = await WowPlayer.find({}).sort({score:-1});
     for(let i = 0; i < ps.length; i++) {
         let t = "<tr class='clickable-row' data-href='http://35.231.39.26:3000/users/getUser?id="+ps[i]._id+"'>\n" +
             "        <th class='align-middle' scope=\"row\">"+(i+1)+"</th>\n" +
