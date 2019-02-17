@@ -88,6 +88,7 @@
     $(document).ready(function() {
 
 
+
             $( "#div" ).css('max-height', '130px');
 
             $("#c").attr("width", $(window).width());
@@ -260,90 +261,10 @@
             infot.text += "Reyting "+($("#info").attr("mission"));
             infot.text += "\nXal "+(parseInt($("#info").attr("score"))+ts);
             stage.canvas.ontouchend = function(e){
-                S = {};
-                start = 0;
-                if(sozler[text.text] != undefined && tapilanlar[text.text] == undefined) {
-                    audiot.play()
-                    InfoD[text.text.length]--;
-                    infot.text = "";
-                    ts++;
-                    for(let i = n; i >= 1; i--) {
-
-                        if(InfoD[i] != undefined && InfoD[i] != 0) {
-                            infot.text += (i+" Hərf    " + (InfoD[i])) + "\n";
-                        }
-                    }
-                    infot.text += (""+Math.ceil(ts/ws * 100) + "%\n\n");
-                    infot.text += "Reyting "+($("#info").attr("mission"));
-                    infot.text += "\nXal "+(parseInt($("#info").attr("score"))+ts);
-                    console.log(InfoD)
-
-                    let f = ts / ws * 100;
-                    console.log(f);
-                    if(f >= 30) {
-                        nextButton.alpha = 1;
-                        btext.alpha = 1;
-                        if(audion.playedd == undefined) {
-                            audion.play();
-                            audion.playedd = true;
-                        }
-                    }
-
-
-                    tapilanlar[text.text] = true;
-                }
-                text.text = "";
-
-                for(let i = 0; i < n; i++) {
-                    C[i].c.alpha = 0.01;
-                }
-                for(let i = 0; i < L.length; i++) {
-                    cont.removeChild(L[i]);
-                }
-                stage.update();
+                handleup();
             };
             stage.canvas.onmouseup = function(e){
-                S = {};
-                start = 0;
-                if(sozler[text.text] != undefined && tapilanlar[text.text] == undefined) {
-                    audiot.play()
-                    InfoD[text.text.length]--;
-                    infot.text = "";
-                    ts++;
-                    for(let i = n; i >= 1; i--) {
-
-                        if(InfoD[i] != undefined && InfoD[i] != 0) {
-                            infot.text += (i+" Hərf    " + (InfoD[i])) + "\n";
-                        }
-                    }
-                    infot.text += (""+Math.ceil(ts/ws * 100) + "%\n\n");
-                    infot.text += "Reyting "+($("#info").attr("mission"));
-                    infot.text += "\nXal "+(parseInt($("#info").attr("score"))+ts);
-                    console.log(InfoD)
-
-                    let f = ts / ws * 100;
-                    console.log(f);
-                    if(f >= 30) {
-                        nextButton.alpha = 1;
-                        btext.alpha = 1;
-                        if(audion.playedd == undefined) {
-                            audion.play();
-                            audion.playedd = true;
-                        }
-                    }
-
-
-                    tapilanlar[text.text] = true;
-                }
-                text.text = "";
-
-                for(let i = 0; i < n; i++) {
-                    C[i].c.alpha = 0.01;
-                }
-                for(let i = 0; i < L.length; i++) {
-                    cont.removeChild(L[i]);
-                }
-                stage.update();
+                handleup();
             };
 
             stage.canvas.style.backgroundColor = "#2a2a32";
@@ -418,6 +339,50 @@
             stage.addChild(button);
             stage.update();
 
+        }
+        
+        function handleup() {
+            S = {};
+            start = 0;
+            if(sozler[text.text] != undefined && tapilanlar[text.text] == undefined) {
+                audiot.play()
+                InfoD[text.text.length]--;
+                infot.text = "";
+                ts++;
+                for(let i = n; i >= 1; i--) {
+
+                    if(InfoD[i] != undefined && InfoD[i] != 0) {
+                        infot.text += (i+" Hərf    " + (InfoD[i])) + "\n";
+                    }
+                }
+                infot.text += (""+Math.ceil(ts/ws * 100) + "%\n\n");
+                infot.text += "Reyting "+($("#info").attr("mission"));
+                infot.text += "\nXal "+(parseInt($("#info").attr("score"))+ts);
+                console.log(InfoD)
+
+                let f = ts / ws * 100;
+                console.log(f);
+                if(f >= 40) {
+                    nextButton.alpha = 1;
+                    btext.alpha = 1;
+                    if(audion.playedd == undefined) {
+                        audion.play();
+                        audion.playedd = true;
+                    }
+                }
+
+
+                tapilanlar[text.text] = true;
+            }
+            text.text = "";
+
+            for(let i = 0; i < n; i++) {
+                C[i].c.alpha = 0.01;
+            }
+            for(let i = 0; i < L.length; i++) {
+                cont.removeChild(L[i]);
+            }
+            stage.update();
         }
         );
 </script>
