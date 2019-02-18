@@ -95,7 +95,10 @@
             $("#c").attr("height", $(window).height());
 
             $( ".clickable-row" ).dblclick(function() {
-                text.text = "sad";
+                //text.text = "sad";
+                $.post( "reclamprofile", function( data ) {
+
+                });
                 let url = $(this).attr("data-href");
                 window.location.href = url;
             });
