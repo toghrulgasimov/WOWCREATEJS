@@ -162,6 +162,12 @@ router.get('/start', async function(req, res, next) {
     res.send($.html());//test
 });
 
+router.get('/reclamprofile', async function(req, res, next) {
+    res.send("succes");
+});
+
+
+
 
 
 module.exports = router;
