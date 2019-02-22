@@ -87,8 +87,14 @@
     var audios = new Audio('sounds/back.ogg');
 
     var audion = new Audio('sounds/correct22.ogg');
-    var AC = [new Audio('sounds/cl1.ogg'),new Audio('sounds/cl2.ogg'),new Audio('sounds/cl3.ogg'),new Audio('sounds/cl4.ogg')
-    ,new Audio('sounds/cl5.ogg'),new Audio('sounds/cl6.ogg'),new Audio('sounds/cl7.ogg')];
+    var AC = [];
+    AC[0] = Audio('sounds/cl1.ogg');
+    AC[1] = Audio('sounds/cl2.ogg');
+    AC[2] = Audio('sounds/cl3.ogg');
+    AC[3] = Audio('sounds/cl4.ogg');
+    AC[4] = Audio('sounds/cl5.ogg');
+    AC[5] = Audio('sounds/cl6.ogg');
+    AC[6] = Audio('sounds/cl7.ogg');
     //audion.play();
     $(document).ready(function() {
 
@@ -214,8 +220,7 @@
                 let t = C[i];
                 let j = i;
                 t.cont.on("mousedown",function(evt) {
-                    //AC[0].play();
-                    audios.play();
+                    AC[0].play();
                     start = 1;
                     S[j] = 1;
                     console.log(t.t.text);
@@ -291,8 +296,7 @@
                     let p = new createjs.Point(x, y);
                     if(S[i] == undefined && C[i].cont.hitTest(p.x, p.y)) {
                         text.text += C[i].t.text;
-                        //AC[text.text.length-1].play();
-                        audios.play();
+                        AC[text.text.length-1].play();
                         S[i] = 0;
                         C[i].c.alpha = 1;
                         command.x = C[i].cont.x;
