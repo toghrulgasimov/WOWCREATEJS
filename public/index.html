@@ -25,10 +25,10 @@
     </style>
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/createjs.min.js"></script>
+    <script src="https://code.createjs.com/easeljs-0.8.2.min.js"></script>
     <script src="js/preloadjs.min.js"></script>
     <script src="js/soundjs.min.js"></script>
     <script src="js/tweenjs.min.js"></script>
-    <script src="https://code.createjs.com/easeljs-0.8.2.min.js"></script>
 
 
 
@@ -214,7 +214,8 @@
                 let t = C[i];
                 let j = i;
                 t.cont.on("mousedown",function(evt) {
-                    AC[0].play();
+                    //AC[0].play();
+                    audios.play();
                     start = 1;
                     S[j] = 1;
                     console.log(t.t.text);
@@ -290,7 +291,8 @@
                     let p = new createjs.Point(x, y);
                     if(S[i] == undefined && C[i].cont.hitTest(p.x, p.y)) {
                         text.text += C[i].t.text;
-                        AC[text.text.length-1].play();
+                        //AC[text.text.length-1].play();
+                        audios.play();
                         S[i] = 0;
                         C[i].c.alpha = 1;
                         command.x = C[i].cont.x;
@@ -353,11 +355,21 @@
             stage.addChild(button);
             stage.update();
 
+            createjs.Ticker.setFPS(40);
+            createjs.Ticker.addEventListener("tick", stage);
+
+
             function handleup() {
                 S = {};
                 start = 0;
                 if(sozler[text.text] == undefined && text.text.length != 0) {
                     audios.play();
+
+                    console.log(createjs.Tween)
+                    // createjs.Tween.get(cont, { loop: false })
+                    //     .to({ scaleX: 2 , scaleY : 2}, 1000, createjs.Ease.getPowInOut(4))
+                    //     .to({ scaleX: 1, scaleY : 1 }, 800, createjs.Ease.getPowInOut(2));
+
                 }
                 if(tapilanlar[text.text] != undefined) {
                     audioe.play();
