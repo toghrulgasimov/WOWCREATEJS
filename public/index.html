@@ -88,7 +88,7 @@
 
     var audion = new Audio('sounds/correct22.ogg');
     var AC = [];
-    AC[0] =new Audio('sounds/cl1.ogg');
+    var AC0 =new Audio('sounds/cl1.ogg');
     AC[1] =new Audio('sounds/cl2.ogg');
     AC[2] =new Audio('sounds/cl3.ogg');
     AC[3] =new Audio('sounds/cl4.ogg');
@@ -220,7 +220,7 @@
                 let t = C[i];
                 let j = i;
                 t.cont.on("mousedown",function(evt) {
-                    AC[0].play();
+                    AC0.play();
                     start = 1;
                     S[j] = 1;
                     console.log(t.t.text);
