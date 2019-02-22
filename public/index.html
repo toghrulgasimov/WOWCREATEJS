@@ -356,7 +356,7 @@
             function handleup() {
                 S = {};
                 start = 0;
-                if(sozler[text.text] == undefined) {
+                if(sozler[text.text] == undefined && text.text.length != 0) {
                     audios.play();
                 }
                 if(tapilanlar[text.text] != undefined) {
