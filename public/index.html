@@ -73,6 +73,369 @@
 <script>
 
     function init() {
+        console.log("begin");
+        var audioPath = "sounds/";
+        var sounds = [
+            {id:"audioe", src:"330056__paulmorek__beep-05-positive-3.ogg"},
+            {id:"audion", src:"correct22.ogg"},
+            {id:"audiot", src:"collect.ogg"},
+            {id:"audios", src:"back.ogg"},
+            {id:"0", src:"cl1.ogg"},
+            {id:"1", src:"cl2.ogg"},
+            {id:"2", src:"cl3.ogg"},
+            {id:"3", src:"cl4.ogg"},
+            {id:"4", src:"cl5.ogg"},
+            {id:"5", src:"cl6.ogg"},
+            {id:"6", src:"cl7.ogg"}
+        ];
+
+        createjs.Sound.alternateExtensions = ["mp3"];
+        createjs.Sound.addEventListener("fileload", handleLoad);
+        createjs.Sound.registerSounds(sounds, audioPath);
+        function handleLoad(event) {
+            createjs.Sound.play("Thunder");
+
+            createjs.Sound.play("Thunder");
+        }
+
+
+
+        
+        $(document).ready(function() {
+
+
+                $( "#div" ).css('max-height', '130px');
+
+                $("#c").attr("width", $(window).width());
+
+                $("#c").attr("height", $(window).height());
+
+                $( ".clickable-row" ).dblclick(function() {
+                    //text.text = "sad";
+
+                    let url = $(this).attr("data-href");
+                    window.location.href = url;
+                });
+                let game = $("#info").attr("wow");
+                let words = game.split("|");
+                let herfler = words[0];
+                let tapilanlar = {};
+                let sozler = {};
+                let InfoD = {};
+                for(let i = 1; i < words.length; i++) {
+                    sozler[words[i]] = true;
+                    if(InfoD[words[i].length] == undefined) InfoD[words[i].length] = 1;
+                    else InfoD[words[i].length] = InfoD[words[i].length] + 1;
+                }
+                console.log(InfoD)
+
+                var stage, text;
+                stage = new createjs.Stage("c");
+
+                stage.enableMouseOver();
+                createjs.Touch.enable(stage);
+                console.log( createjs.Touch.isSupported())
+
+
+                let start = 0;
+                let S = {};
+                let L = [];
+
+
+
+                let n = herfler.length;
+                let R = 95, RR = 65;
+
+                if(n == 3) {
+                    RR = 65;
+                    R = 95;
+                }else if(n == 4) {
+                    RR = 65;
+                    R = 95;
+                }else if(n == 6) {
+                    RR = 80;
+                    R = 110;
+                }else if(n == 7) {
+                    RR = 100;
+                    R = 130;
+                }else if(n == 8) {
+                    RR = 100;
+                    R = 130;
+                }else if(n == 9) {
+                    RR = 120;
+                    R = 150;
+                }
+                let C = [];
+                let cont = new createjs.Container();
+                let ce = new createjs.Shape();
+                ce.graphics.beginFill("#000000").drawCircle(0, 0, R);
+                ce.x = 200;
+                ce.y = -30;
+
+                text = new createjs.Text("", "50px Arial", "#ffffff");
+                text.x = ce.x;
+                text.y = ce.y - R - 80+10+20;
+                text.textAlign = "center";
+                cont.addChild(ce);
+                cont.addChild(text);
+
+                // let ch = ['A','M','Ç','D','E', 'F', 'T', 'T', 'T', 'T', 'T'];
+                for(let i = 0; i < n; i++) {
+                    let text = new createjs.Text(herfler.charAt(i), "50px Arial", "#ffffff");
+                    text.x = -20+6;
+                    text.y = -20+6-3-2-2;
+                    let circle = new createjs.Shape();
+                    circle.alpha = 0.01;
+                    circle.graphics.beginFill("#ff00b0").drawCircle(0, 0, 35);
+
+
+                    let c = new createjs.Container();
+                    c.addChild(circle);
+                    c.addChild(text);
+
+                    C.push({t:text, c : circle, cont : c});
+                    cont.addChild(c);
+                }
+
+                stage.addChild(cont);
+
+                let w = $(window).width();
+                let h = $(window).height();
+                cont.x = w / 2 - ce.x;
+                cont.y = h-R - ce.y - 120       -     160;
+
+
+
+                let angle = 0;
+                let d = 2 * Math.PI / n;
+                for(let i = 0; i < n; i++) {
+                    let t = C[i];
+                    t.cont.x = ce.x;
+                    t.cont.y = ce.y - RR;
+                    var X = Math.cos(angle) * (t.cont.x - ce.x) - Math.sin(angle) * (t.cont.y-ce.y) + ce.x;
+                    var Y = Math.sin(angle) * (t.cont.x - ce.x) + Math.cos(angle) * (t.cont.y - ce.y) + ce.y;
+                    t.cont.x = X;
+                    t.cont.y = Y;
+                    angle += d;
+                }
+
+
+                let command = null;
+                for(let i = 0; i < n; i++) {
+                    let t = C[i];
+                    let j = i;
+                    t.cont.on("mousedown",function(evt) {
+                        createjs.Sound.play("0");
+
+                        start = 1;
+                        S[j] = 1;
+                        console.log(t.t.text);
+                        text.text = t.t.text;
+                        t.c.alpha = 1;
+                        var line = new createjs.Shape();
+                        line.graphics.setStrokeStyle(20);
+                        line.graphics.beginStroke("#ff00b0");
+                        line.graphics.moveTo(t.cont.x, t.cont.y);
+                        console.log(t.cont.x, t.cont.y)
+                        command = line.graphics.lineTo(t.cont.x, t.cont.y).command;
+                        line.graphics.endStroke();
+                        cont.addChild(line);
+                        cont.setChildIndex(line, 1);
+                        L.push(line);
+
+                        stage.update();
+                    });
+
+
+                }
+
+                stage.update();
+
+
+                let ts = 0;
+                let ws = words.length - 1;
+                let button = new createjs.Container()
+                let btext = new createjs.Text("Növbəti", "30px Arial", "#000000");
+                btext.x = 0;
+                btext.y = 0;
+
+                let infot = new createjs.Text("", "20px Arial", "#4eff00");
+                infot.x = 0;
+                infot.y = 10;
+                let nextButton = new createjs.Shape();
+                nextButton.graphics.beginFill('#6aff1b');
+                nextButton.graphics.drawRect(-11, -11, 120, 50);
+                nextButton.graphics.endFill();
+                let InfoDD = {};
+
+                for(let i = n; i >= 1; i--) {
+                    InfoDD[i] = InfoD[i];
+                    if(InfoD[i] != undefined && InfoD[i] != 0) {
+                        infot.text += (i+" Hərf    " + (InfoD[i])) + "\n";
+                    }
+                }
+                infot.text += (""+Math.ceil(ts/ws * 100) + "%\n\n");
+                infot.text += "Reyting "+($("#info").attr("mission"));
+                infot.text += "\nXal "+(parseInt($("#info").attr("score"))+ts);
+                stage.canvas.ontouchend = function(e){
+                    handleup();
+                };
+                stage.canvas.onmouseup = function(e){
+                    handleup()
+                };
+
+                stage.canvas.style.backgroundColor = "#2a2a32";
+
+
+
+
+
+                stage.on("stagemousemove" , function (e) {
+                    if(start == 0) return;
+                    command.x = e.stageX-cont.x;
+                    command.y = e.stageY-cont.y;
+                    for(let i = 0; i < n;i++) {
+                        let x = e.stageX-cont.x-C[i].cont.x;
+                        let y = e.stageY-cont.y-C[i].cont.y;
+
+
+                        let p = new createjs.Point(x, y);
+                        if(S[i] == undefined && C[i].cont.hitTest(p.x, p.y)) {
+                            text.text += C[i].t.text;
+                            createjs.Sound.play((text.text.length-1)+"");
+                            S[i] = 0;
+                            C[i].c.alpha = 1;
+                            command.x = C[i].cont.x;
+                            command.y = C[i].cont.y;
+                            var line = new createjs.Shape();
+                            line.graphics.setStrokeStyle(20);
+                            line.graphics.beginStroke("#ff00b0");
+                            line.graphics.moveTo(C[i].cont.x, C[i].cont.y);
+                            command = line.graphics.lineTo(C[i].cont.x, C[i].cont.y).command;
+                            line.graphics.endStroke();
+
+                            cont.addChild(line);
+                            cont.setChildIndex(line, 1);
+                            L.push(line);
+
+
+                        }
+                    }
+
+                    stage.update();
+                })
+
+
+
+
+
+
+
+
+
+                stage.addChild(infot);
+                //button.addChild(infot);
+                button.addChild(nextButton);
+                button.addChild(btext);
+
+                nextButton.alpha = 0;
+                btext.alpha = 0;
+
+                button.on("click", function(evt) {
+                    $.ajax({
+                        type: "POST",
+                        url: "/reclamprofile",
+                        data: {ts:ts},
+                        success: function () {
+
+                        }
+                    });
+                    $.ajax({
+                        type: "POST",
+                        url: "/nextmission",
+                        data: {ts:ts},
+                        success: function () {
+                            window.location.href = "http://35.231.39.26:3005/start"
+                        }
+                    });
+                });
+
+                button.x = $(window).width() / 2 - 20;
+                button.y = 10;
+                stage.addChild(button);
+                stage.update();
+
+                createjs.Ticker.setFPS(40);
+                createjs.Ticker.addEventListener("tick", stage);
+
+
+                function handleup() {
+                    S = {};
+                    start = 0;
+                    if(sozler[text.text] == undefined && text.text.length != 0) {
+
+                        createjs.Sound.play("audios");
+
+
+                        console.log(createjs.Tween)
+                        // createjs.Tween.get(cont, { loop: false })
+                        //     .to({ scaleX: 2 , scaleY : 2}, 1000, createjs.Ease.getPowInOut(4))
+                        //     .to({ scaleX: 1, scaleY : 1 }, 800, createjs.Ease.getPowInOut(2));
+
+                    }
+                    if(tapilanlar[text.text] != undefined) {
+                        //audioe.play();
+                        createjs.Sound.play("audioe");
+                    }
+                    if(sozler[text.text] != undefined && tapilanlar[text.text] == undefined) {
+                        //audiot.play()
+                        createjs.Sound.play("audiot");
+                        InfoD[text.text.length]--;
+                        infot.text = "";
+                        ts++;
+                        for(let i = n; i >= 1; i--) {
+
+                            if(InfoD[i] != undefined && InfoD[i] != 0) {
+                                infot.text += (i+" Hərf    " + (InfoD[i])) + "\n";
+                            }
+                        }
+                        infot.text += (""+Math.ceil(ts/ws * 100) + "%\n\n");
+                        infot.text += "Reyting "+($("#info").attr("mission"));
+                        infot.text += "\nXal "+(parseInt($("#info").attr("score"))+ts);
+                        console.log(InfoD)
+
+                        let f = ts / ws * 100;
+                        console.log(f);
+                        if(f >= 40) {
+
+                            if(audion.playedd == undefined) {
+                                setTimeout(()=>{
+                                    //audion.play();
+                                    createjs.Sound.play("audion");
+                                    audion.playedd = true;
+                                    nextButton.alpha = 1;
+                                    btext.alpha = 1;
+                                    stage.update();
+                                }, 1000);
+                            }
+                        }
+
+
+                        tapilanlar[text.text] = true;
+                    }
+                    text.text = "";
+
+                    for(let i = 0; i < n; i++) {
+                        C[i].c.alpha = 0.01;
+                    }
+                    for(let i = 0; i < L.length; i++) {
+                        cont.removeChild(L[i]);
+                    }
+                    stage.update();
+                }
+
+            }
+        );
 
     }
 
@@ -80,351 +443,10 @@
 <script>
 
 
-    var audiot = new Audio('sounds/collect.ogg');
-    var audioe = new Audio('sounds/330056__paulmorek__beep-05-positive-3.ogg');
-    //audiot.play();
 
-    var audios = new Audio('sounds/back.ogg');
 
-    var audion = new Audio('sounds/correct22.ogg');
-    var AC = [];
-    var AC0 =new Audio('sounds/cl1.ogg');
-    AC[1] =new Audio('sounds/cl2.ogg');
-    AC[2] =new Audio('sounds/cl3.ogg');
-    AC[3] =new Audio('sounds/cl4.ogg');
-    AC[4] =new Audio('sounds/cl5.ogg');
-    AC[5] =new Audio('sounds/cl6.ogg');
-    AC[6] =new Audio('sounds/cl7.ogg');
-    //audion.play();
-    $(document).ready(function() {
 
 
-            $( "#div" ).css('max-height', '130px');
-
-            $("#c").attr("width", $(window).width());
-
-            $("#c").attr("height", $(window).height());
-
-            $( ".clickable-row" ).dblclick(function() {
-                //text.text = "sad";
-
-                let url = $(this).attr("data-href");
-                window.location.href = url;
-            });
-            let game = $("#info").attr("wow");
-            let words = game.split("|");
-            let herfler = words[0];
-            let tapilanlar = {};
-            let sozler = {};
-            let InfoD = {};
-            for(let i = 1; i < words.length; i++) {
-                sozler[words[i]] = true;
-                if(InfoD[words[i].length] == undefined) InfoD[words[i].length] = 1;
-                else InfoD[words[i].length] = InfoD[words[i].length] + 1;
-            }
-            console.log(InfoD)
-
-            var stage, text;
-            stage = new createjs.Stage("c");
-
-            stage.enableMouseOver();
-            createjs.Touch.enable(stage);
-            console.log( createjs.Touch.isSupported())
-
-
-            let start = 0;
-            let S = {};
-            let L = [];
-
-
-
-            let n = herfler.length;
-            let R = 95, RR = 65;
-
-            if(n == 3) {
-                RR = 65;
-                R = 95;
-            }else if(n == 4) {
-                RR = 65;
-                R = 95;
-            }else if(n == 6) {
-                RR = 80;
-                R = 110;
-            }else if(n == 7) {
-                RR = 100;
-                R = 130;
-            }else if(n == 8) {
-                RR = 100;
-                R = 130;
-            }else if(n == 9) {
-                RR = 120;
-                R = 150;
-            }
-            let C = [];
-            let cont = new createjs.Container();
-            let ce = new createjs.Shape();
-            ce.graphics.beginFill("#000000").drawCircle(0, 0, R);
-            ce.x = 200;
-            ce.y = -30;
-
-            text = new createjs.Text("", "50px Arial", "#ffffff");
-            text.x = ce.x;
-            text.y = ce.y - R - 80+10+20;
-            text.textAlign = "center";
-            cont.addChild(ce);
-            cont.addChild(text);
-
-            // let ch = ['A','M','Ç','D','E', 'F', 'T', 'T', 'T', 'T', 'T'];
-            for(let i = 0; i < n; i++) {
-                let text = new createjs.Text(herfler.charAt(i), "50px Arial", "#ffffff");
-                text.x = -20+6;
-                text.y = -20+6-3-2-2;
-                let circle = new createjs.Shape();
-                circle.alpha = 0.01;
-                circle.graphics.beginFill("#ff00b0").drawCircle(0, 0, 35);
-
-
-                let c = new createjs.Container();
-                c.addChild(circle);
-                c.addChild(text);
-
-                C.push({t:text, c : circle, cont : c});
-                cont.addChild(c);
-            }
-
-            stage.addChild(cont);
-
-            let w = $(window).width();
-            let h = $(window).height();
-            cont.x = w / 2 - ce.x;
-            cont.y = h-R - ce.y - 120       -     160;
-
-
-
-            let angle = 0;
-            let d = 2 * Math.PI / n;
-            for(let i = 0; i < n; i++) {
-                let t = C[i];
-                t.cont.x = ce.x;
-                t.cont.y = ce.y - RR;
-                var X = Math.cos(angle) * (t.cont.x - ce.x) - Math.sin(angle) * (t.cont.y-ce.y) + ce.x;
-                var Y = Math.sin(angle) * (t.cont.x - ce.x) + Math.cos(angle) * (t.cont.y - ce.y) + ce.y;
-                t.cont.x = X;
-                t.cont.y = Y;
-                angle += d;
-            }
-
-
-            let command = null;
-            for(let i = 0; i < n; i++) {
-                let t = C[i];
-                let j = i;
-                t.cont.on("mousedown",function(evt) {
-                    AC0.play();
-                    start = 1;
-                    S[j] = 1;
-                    console.log(t.t.text);
-                    text.text = t.t.text;
-                    t.c.alpha = 1;
-                    var line = new createjs.Shape();
-                    line.graphics.setStrokeStyle(20);
-                    line.graphics.beginStroke("#ff00b0");
-                    line.graphics.moveTo(t.cont.x, t.cont.y);
-                    console.log(t.cont.x, t.cont.y)
-                    command = line.graphics.lineTo(t.cont.x, t.cont.y).command;
-                    line.graphics.endStroke();
-                    cont.addChild(line);
-                    cont.setChildIndex(line, 1);
-                    L.push(line);
-
-                    stage.update();
-                });
-
-
-            }
-
-            stage.update();
-
-
-            let ts = 0;
-            let ws = words.length - 1;
-            let button = new createjs.Container()
-            let btext = new createjs.Text("Növbəti", "30px Arial", "#000000");
-            btext.x = 0;
-            btext.y = 0;
-
-            let infot = new createjs.Text("", "20px Arial", "#4eff00");
-            infot.x = 0;
-            infot.y = 10;
-            let nextButton = new createjs.Shape();
-            nextButton.graphics.beginFill('#6aff1b');
-            nextButton.graphics.drawRect(-11, -11, 120, 50);
-            nextButton.graphics.endFill();
-            let InfoDD = {};
-
-            for(let i = n; i >= 1; i--) {
-                InfoDD[i] = InfoD[i];
-                if(InfoD[i] != undefined && InfoD[i] != 0) {
-                    infot.text += (i+" Hərf    " + (InfoD[i])) + "\n";
-                }
-            }
-            infot.text += (""+Math.ceil(ts/ws * 100) + "%\n\n");
-            infot.text += "Reyting "+($("#info").attr("mission"));
-            infot.text += "\nXal "+(parseInt($("#info").attr("score"))+ts);
-            stage.canvas.ontouchend = function(e){
-                handleup();
-            };
-            stage.canvas.onmouseup = function(e){
-                handleup()
-            };
-
-            stage.canvas.style.backgroundColor = "#2a2a32";
-
-
-
-
-
-            stage.on("stagemousemove" , function (e) {
-                if(start == 0) return;
-                command.x = e.stageX-cont.x;
-                command.y = e.stageY-cont.y;
-                for(let i = 0; i < n;i++) {
-                    let x = e.stageX-cont.x-C[i].cont.x;
-                    let y = e.stageY-cont.y-C[i].cont.y;
-
-
-                    let p = new createjs.Point(x, y);
-                    if(S[i] == undefined && C[i].cont.hitTest(p.x, p.y)) {
-                        text.text += C[i].t.text;
-                        AC[text.text.length-1].play();
-                        S[i] = 0;
-                        C[i].c.alpha = 1;
-                        command.x = C[i].cont.x;
-                        command.y = C[i].cont.y;
-                        var line = new createjs.Shape();
-                        line.graphics.setStrokeStyle(20);
-                        line.graphics.beginStroke("#ff00b0");
-                        line.graphics.moveTo(C[i].cont.x, C[i].cont.y);
-                        command = line.graphics.lineTo(C[i].cont.x, C[i].cont.y).command;
-                        line.graphics.endStroke();
-
-                        cont.addChild(line);
-                        cont.setChildIndex(line, 1);
-                        L.push(line);
-
-
-                    }
-                }
-
-                stage.update();
-            })
-
-
-
-
-
-
-
-
-
-        stage.addChild(infot);
-            //button.addChild(infot);
-            button.addChild(nextButton);
-            button.addChild(btext);
-
-            nextButton.alpha = 0;
-            btext.alpha = 0;
-
-            button.on("click", function(evt) {
-                $.ajax({
-                    type: "POST",
-                    url: "/reclamprofile",
-                    data: {ts:ts},
-                    success: function () {
-
-                    }
-                });
-                $.ajax({
-                    type: "POST",
-                    url: "/nextmission",
-                    data: {ts:ts},
-                    success: function () {
-                        window.location.href = "http://35.231.39.26:3005/start"
-                    }
-                });
-            });
-
-            button.x = $(window).width() / 2 - 20;
-            button.y = 10;
-            stage.addChild(button);
-            stage.update();
-
-            createjs.Ticker.setFPS(40);
-            createjs.Ticker.addEventListener("tick", stage);
-
-
-            function handleup() {
-                S = {};
-                start = 0;
-                if(sozler[text.text] == undefined && text.text.length != 0) {
-                    audios.play();
-
-                    console.log(createjs.Tween)
-                    // createjs.Tween.get(cont, { loop: false })
-                    //     .to({ scaleX: 2 , scaleY : 2}, 1000, createjs.Ease.getPowInOut(4))
-                    //     .to({ scaleX: 1, scaleY : 1 }, 800, createjs.Ease.getPowInOut(2));
-
-                }
-                if(tapilanlar[text.text] != undefined) {
-                    audioe.play();
-                }
-                if(sozler[text.text] != undefined && tapilanlar[text.text] == undefined) {
-                    audiot.play()
-                    InfoD[text.text.length]--;
-                    infot.text = "";
-                    ts++;
-                    for(let i = n; i >= 1; i--) {
-
-                        if(InfoD[i] != undefined && InfoD[i] != 0) {
-                            infot.text += (i+" Hərf    " + (InfoD[i])) + "\n";
-                        }
-                    }
-                    infot.text += (""+Math.ceil(ts/ws * 100) + "%\n\n");
-                    infot.text += "Reyting "+($("#info").attr("mission"));
-                    infot.text += "\nXal "+(parseInt($("#info").attr("score"))+ts);
-                    console.log(InfoD)
-
-                    let f = ts / ws * 100;
-                    console.log(f);
-                    if(f >= 40) {
-
-                        if(audion.playedd == undefined) {
-                            setTimeout(()=>{
-                                audion.play();
-                                audion.playedd = true;
-                                nextButton.alpha = 1;
-                                btext.alpha = 1;
-                                stage.update();
-                            }, 2000);
-                        }
-                    }
-
-
-                    tapilanlar[text.text] = true;
-                }
-                text.text = "";
-
-                for(let i = 0; i < n; i++) {
-                    C[i].c.alpha = 0.01;
-                }
-                for(let i = 0; i < L.length; i++) {
-                    cont.removeChild(L[i]);
-                }
-                stage.update();
-            }
-
-        }
-        );
 </script>
 </body>
 </html>
