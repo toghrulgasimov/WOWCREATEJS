@@ -220,7 +220,7 @@
                 let t = C[i];
                 let j = i;
                 t.cont.on("mousedown",function(evt) {
-                    AC4.play();
+                    AC0.play();
                     start = 1;
                     S[j] = 1;
                     console.log(t.t.text);
@@ -296,8 +296,7 @@
                     let p = new createjs.Point(x, y);
                     if(S[i] == undefined && C[i].cont.hitTest(p.x, p.y)) {
                         text.text += C[i].t.text;
-                        AC[text.text.length-1].play();
-                        AC[2].play();
+                        AC0.play()
                         S[i] = 0;
                         C[i].c.alpha = 1;
                         command.x = C[i].cont.x;
