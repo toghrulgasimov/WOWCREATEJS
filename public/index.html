@@ -80,6 +80,7 @@
             {id:"audion", src:"correct22.ogg"},
             {id:"audiot", src:"collect.ogg"},
             {id:"audios", src:"back.ogg"},
+            {id:"background", src:"puzzle-game_looping.ogg"},
             {id:"0", src:"cl1.ogg"},
             {id:"1", src:"cl2.ogg"},
             {id:"2", src:"cl3.ogg"},
@@ -93,10 +94,12 @@
         createjs.Sound.alternateExtensions = ["mp3"];
         createjs.Sound.addEventListener("fileload", handleLoad);
         createjs.Sound.registerSounds(sounds, audioPath);
-        function handleLoad(event) {
-            createjs.Sound.play("Thunder");
-
-            createjs.Sound.play("Thunder");
+        function handleLoad(e) {
+            //createjs.Sound.play("background");
+            console.log(e.id)
+            if(e.id == "background") {
+                createjs.Sound.play("background");
+            }
         }
 
 
@@ -391,6 +394,7 @@
                     if(sozler[text.text] != undefined && tapilanlar[text.text] == undefined) {
                         //audiot.play()
                         createjs.Sound.play("audiot");
+
                         InfoD[text.text.length]--;
                         infot.text = "";
                         ts++;
