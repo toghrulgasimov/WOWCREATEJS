@@ -98,7 +98,8 @@
             //createjs.Sound.play("background");
             console.log(e.id)
             if(e.id == "background") {
-                createjs.Sound.play("background");
+                var instance = createjs.Sound.play("background", {loop:-1});
+                instance.volume = 0.03;
             }
         }
 
